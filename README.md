@@ -9,3 +9,4 @@ Really just brainstorming an idea for a site, I found myself changing the site's
 
 #### AI-Use
 I primarily used chat bots to brainstorm an idea for the table in *projects.html*, as I struggled to come up with a idea for that. Aside from that, it was mainly just to help understand some elements that i was confused about.
+![Munchkin cat performing a trick](./images/readmeimg.gif)
