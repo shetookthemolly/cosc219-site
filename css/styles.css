@@ -21,7 +21,7 @@ body {
 
 header {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: var(space);
+    font-size: var(--space);
     color: var(--mainheadtxt);
     background-color: var(--mainheadbg);
     border: 4px solid;
