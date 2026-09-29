@@ -12,4 +12,5 @@ In the first lab, I primarily used chat bots to brainstorm an idea for the table
 
 ##### 09/29/26 Update (Lab 2)
 In the second lab, I created a page with a form for providing contact information. I applied a lot of styling to all pages, and changed a few images. One styling decision I made was navigation links being highlighted when you hover your cursor over them. The reason I did this was to make the navigation footer on each page standout more. I quite enjoyed how the styling turned out on each page, but I still have more ideas for the next lab that will make each web page look even better.
+
 ![Munchkin cat performing a trick](./images/readmeimg.gif)
