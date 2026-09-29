@@ -20,8 +20,8 @@
 }
 
 body {
-    background-color: var(--maincol);
     line-height: 1.5;
+    background-color: #2e2e2e;
 }
 
 header {
@@ -30,17 +30,19 @@ header {
     color: var(--mainheadtxt);
     background-color: var(--mainheadbg);
     border: 4px solid;
-    max-width: 350px;
-    margin: 0 auto;
+    margin-bottom: 12px;
     padding: 10px;
     border-color: var(--bordercol);
     border-radius: 5px;
 }
 
 main {
-    max-width: 42rem;
+    border: 3px solid;
+    border-color: var(--bordercol);
+    border-radius: 5px;
     margin: 0 auto;
     padding: 10px;
+    background-color: var(--maincol);
     color: var(--maintxt);
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -49,72 +51,54 @@ footer {
     border: 3px solid;
     border-color: var(--bordercol);
     border-radius: 5px;
-    max-width: 350px;
-    margin: 38px;
+    margin: 0 auto;
     padding: 10px;
+    background-color: var(--maincol);
     color: var(--maintxt);
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.nav-link {
-    max-width: 250px;
-}
-
-.nav-link:hover {
-    color: var(--mainheadtxt);
-    background-color: var(--mainheadbg);
-    border: 3px solid;
-    border-color: #b4a888;
-    border-radius: 2px;
-    max-width: 250px;
-    padding-bottom: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-h1 {
-    margin: auto;
-}
-
-h2, h3, h4, h5 {
-    margin: auto;
-}
-
-a {
-    color: var(--linktxt);
 }
 
 section {
-    max-width: 42rem;
-    margin: 0 auto;
+    border: 3px solid;
+    border-color: var(--bordercol);
+    border-radius: 5px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     padding: 10px;
+    background-color: var(--maincol);
     color: var(--maintxt);
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.munchkin-facts {
-    border: 3px solid;
-    border-color: var(--bordercol);
-    border-radius: 5px;
-}
-
-figure figcaption {
-    color: var(--addtxt);
-}
-
-.munchkin-img {
-    border: 2px solid;
-    border-color: var(--mainheadbg);
-    border-radius: 5px;
-}
-
 article {
-    border: 2px solid;
+    background-color: var(--mainheadbg);
+    color: var(--mainheadtxt);
+    border: 5px solid;
     border-color: var(--bordercol);
     border-radius: 5px;
     padding: 15px;
-    margin-top: 20px;
+    margin-top: 5px;
     margin-bottom: 20px;
+}
+
+article a {
+    color: var(--mainheadtxt);
+}
+
+table {
+    border: 1px solid;
+    border-color: var(--bordercol);
+    border-radius: 5px;
+}
+
+thead {
+    background-color: var(--mainheadbg);
+    color: var(--mainheadtxt);
+}
+
+td {
+    border: 1px solid;
+    border-color: var(--bordercol);
 }
 
 form {
@@ -125,7 +109,6 @@ form {
     border-radius: 5px;
     max-width: 350px;
     margin: 0 auto;
-    margin-top: 19px;
     padding-left: 10px;
     padding-right: 10px
 }
@@ -171,6 +154,54 @@ form textarea:focus {
 
 fieldset legend {
     color: var(--mainheadtxt);
+}
+
+h1 {
+    margin: auto;
+}
+
+h2, h3, h4, h5 {
+    margin: auto;
+}
+
+a {
+    color: var(--linktxt);
+}
+
+figure figcaption {
+    color: var(--addtxt);
+}
+
+.home-pg {
+    margin-bottom: 12px;
+}
+.article-pg {
+    margin-bottom: 12px;
+}
+.contact-pg {
+    margin-bottom: 12px;
+}
+
+.nav-link {
+    max-width: 250px;
+}
+
+.nav-link:hover {
+    color: var(--mainheadtxt);
+    background-color: var(--mainheadbg);
+    border: 3px solid;
+    border-color: #b4a888;
+    border-radius: 2px;
+    max-width: 250px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.munchkin-img {
+    border: 2px solid;
+    border-color: var(--mainheadbg);
+    border-radius: 5px;
 }
 
 button[type="submit"] {
