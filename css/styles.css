@@ -57,8 +57,8 @@ section {
     border: 3px solid;
     border-color: var(--bordercol);
     border-radius: 5px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: var(--space);
+    margin-bottom: var(--space);
     padding: 10px;
     background-color: var(--maincol);
     color: var(--maintxt);
@@ -86,6 +86,10 @@ table {
     border-radius: 5px;
 }
 
+table caption {
+    color: var(--addtxt);
+}
+
 thead {
     background-color: var(--mainheadbg);
     color: var(--mainheadtxt);
@@ -94,6 +98,7 @@ thead {
 td {
     border: 1px solid;
     border-color: var(--bordercol);
+    color: var(--linktxt);
 }
 
 form {
