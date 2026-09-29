@@ -1,97 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-</head>
-<body>
-    <header>
-        <h1>
-            Contact Us
-        </h1>
-    </header>
-    <main>
-        <p>
-            To contact us, fill out the form below:
-        </p>
-        <section>
-            <form>
-                <p>
-                    <label for="name">Name</label>
-                    <input type="text" required id="name" name="name" placeholder="Please enter your name...">
-                </p>
-                <p>
-                    <label for="email">Email</label>
-                    <input type="email" required id="email" name="email" placeholder="myemail@example.com">
-                </p>
-                <p>
-                    <label for="phone">Phone (Optional)</label>
-                    <input type="phone" id="phone" name="phone" placeholder="e.g. 250-530-2090">
-                </p>
-                <p>
-                    <label for="reason-selection">Contact Reason</label>
-                    <select id="reason-selection" name="reason-selection">
-                        <option value="club-inquiry">Inquiry for the Club</option>
-                        <option value="club-join">Looking to join the Club</option>
-                        <option value="club-suggestion">Suggestion for the Club</option>
-                    </select>
-                </p>
-                <p>
-                    <fieldset>
-                        <legend>Preferred Contact Method</legend>
-                        
-                        <label for="con-email">Email</label>
-                        <input type="radio" id="con-email" name="contact-mthd" value="email">
-                        
-                        <label for="con-cell">Phone</label>
-                        <input type="radio" id="con-cell" name="contact-mthd" value="cell">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/styles.css">
+        <title>Contact Us</title>
+    </head>
+    <body>
+        <header>
+            <h1>
+                Contact Us
+            </h1>
+        </header>
+        <main>
+            <p class="opening-paragraph">
+                To contact us, fill out the form below:
+            </p>
+            <section>
+                <form>
+                    <p>
+                        <label for="name">Name</label>
+                        <input type="text" required id="name" name="name" placeholder="Please enter your name...">
+                    </p>
+                    <p>
+                        <label for="email">Email</label>
+                        <input type="email" required id="email" name="email" placeholder="myemail@example.com">
+                    </p>
+                    <p>
+                        <label for="phone">Phone (Optional)</label>
+                        <input type="phone" id="phone" name="phone" placeholder="e.g. 250-530-2090">
+                    </p>
+                    <p>
+                        <label for="reason-selection">Contact Reason</label>
+                        <select id="reason-selection" name="reason-selection">
+                            <option value="club-inquiry">Inquiry for the Club</option>
+                            <option value="club-join">Looking to join the Club</option>
+                            <option value="club-suggestion">Suggestion for the Club</option>
+                        </select>
+                    </p>
+                    <p>
+                        <fieldset>
+                            <legend>Preferred Contact Method</legend>
+                            
+                            <label for="con-email">Email</label>
+                            <input type="radio" id="con-email" name="contact-mthd" value="email">
+                            
+                            <label for="con-cell">Phone</label>
+                            <input type="radio" id="con-cell" name="contact-mthd" value="cell">
 
-                        <label for="con-other">Other</label>
-                        <input type="radio" id="con-other" name="contact-mthd" value="other" required>
-                    </fieldset>
-                </p>
-                <p>
-                    <fieldset>
-                        <legend>Save contact information</legend>
+                            <label for="con-other">Other</label>
+                            <input type="radio" id="con-other" name="contact-mthd" value="other" required>
+                        </fieldset>
+                    </p>
+                    <p>
+                        <fieldset>
+                            <legend>Save contact information</legend>
 
-                        <label for="save-info">Save for future use?</label>
-                        <input type="checkbox" id="save-info" name="save-info" value="agree">
-                    </fieldset>
-                </p>
-                <p>
-                    <label for="add-details">Anything else to add?</label>
-                    <textarea id="add-details" name="add-details" cols="10" placeholder="Type here..."></textarea>
-                </p>
-                <p>
-                    <button type="submit">Click To Submit</button>
-                </p>
-            </form>
-            <figure>
-                <img src="./images/cat-typing.gif" alt="Gif of Cat Typing">
-            </figure>
-        </section>
-    </main>
-    <footer>
-       <nav>
-            <h3>
-                Page Links
-            </h3>
-            <ul>
-                <li>
-                    <a href="index.html">Home Page</a>
-                </li>
-                <li>
-                    <a href="about.html">About Club of Munchkins</a>
-                </li>
-                <li>
-                    <a href="projects.html">Articles & Content</a>
-                </li>
-                <li>
-                    <a href="contact.html">Contact Us</a>
-                </li>
-            </ul>
-        </nav> 
-    </footer>
-</body>
+                            <label for="save-info">Save for future use?</label>
+                            <input type="checkbox" id="save-info" name="save-info" value="agree">
+                        </fieldset>
+                    </p>
+                    <p>
+                        <label for="add-details" class="add-details">Anything else to add?</label>
+                        <textarea id="add-details" name="add-details" cols="25" placeholder="Type here..."></textarea>
+                    </p>
+                    <p>
+                        <button type="submit">Click To Submit</button>
+                    </p>
+                </form>
+            </section>
+        </main>
+        <footer>
+        <nav>
+                <h3>
+                    Page Links
+                </h3>
+                <ul>
+                    <li>
+                        <a href="index.html">Home Page</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About Club of Munchkins</a>
+                    </li>
+                    <li>
+                        <a href="projects.html">Articles & Content</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+            </nav> 
+        </footer>
+    </body>
 </html>
