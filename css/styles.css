@@ -57,7 +57,7 @@ nav {
     align-items: center;
     gap: 1rem;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     background-color: #e1d7b9;
     border: 2.5px solid;
     border-color: var(--brown1);
@@ -81,6 +81,7 @@ article {
     background-color: var(--white3);
     color: var(--black2);
     border: 5px solid;
+    min-width: 0;
     border-color: var(--brown1);
     border-radius: 5px;
     padding: 1rem;
@@ -165,7 +166,7 @@ form textarea:focus {
 }
 
 fieldset legend {
-    color: var(--mainheadtxt);
+    color: var(--black2);
 }
 
 h1 {
@@ -177,11 +178,11 @@ h2, h3, h4, h5 {
 }
 
 a {
-    color: var(--linktxt);
+    color: var(--white2);
 }
 
 figure figcaption {
-    color: var(--addtxt);
+    color: var(--grey1);
 }
 
 .home-pg {
@@ -189,6 +190,23 @@ figure figcaption {
 }
 .article-pg {
     margin-bottom: 12px;
+}
+.cards {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 38rem) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 58rem) {
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 .contact-pg {
     margin-bottom: 12px;
@@ -199,17 +217,19 @@ figure figcaption {
 }
 
 .munchkin-img {
+    max-width: 100%;
+    height: auto;
     border: 2px solid;
-    border-color: var(--mainheadbg);
+    border-color: var(--white3);
     border-radius: 5px;
 }
 
 button[type="submit"] {
-    background-color: var(--mainheadtxt);
+    background-color: var(--black2);
     border: 2px solid;
     border-color: var(--black1);
     font-family:'Times New Roman', Times, serif;
-    color: var(--maintxt);
+    color: var(--white1);
 }
 
 button[type="submit"]:focus {
