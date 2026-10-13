@@ -1,3 +1,4 @@
+/* on Part C */
 
 * {
     box-sizing: border-box;
@@ -11,6 +12,7 @@
     --black2: #4d4d4d;
     --white3: #f9edcd;
     --brown1: #cbc0a5;
+    --brown2: #61605c;
     --space: 1rem;
 }
 
@@ -32,6 +34,7 @@ header {
 }
 
 main {
+    width: 100%;
     border: 3px solid;
     border-color: var(--brown1);
     border-radius: 5px;
@@ -66,13 +69,7 @@ nav {
 }
 
 section {
-    border: 3px solid;
-    border-color: var(--brown1);
-    border-radius: 5px;
-    margin-top: var(--space);
-    margin-bottom: var(--space);
     padding: 10px;
-    background-color: var(--black1);
     color: var(--white1);
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -94,13 +91,15 @@ article a {
 }
 
 table {
-    border: 1px solid;
+    width: 100%;
+    border: 5px solid;
     border-color: var(--brown1);
     border-radius: 5px;
 }
 
 table caption {
     color: var(--grey1);
+    font-size: 12px;
 }
 
 thead {
@@ -108,10 +107,14 @@ thead {
     color: var(--black2);
 }
 
+th {
+    padding: 5px;
+}
+
 td {
-    border: 1px solid;
-    border-color: var(--brown1);
-    border-radius: 1px;
+    text-align: center;
+    padding: 5px;
+    background-color: var(--brown2);
     color: var(--white2);
 }
 
@@ -186,8 +189,33 @@ figure figcaption {
 }
 
 .home-pg {
-    margin-bottom: 12px;
+    display: grid;
+    gap: 1rem;
 }
+
+.home-pg-facts {
+    padding: 10px;
+    background-color: var(--black1);
+    color: var(--white1);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 3px solid;
+    border-color: var(--brown1);
+    border-radius: 5px;
+    background-color: var(--black1);
+}
+
+.ab-outer-container {
+    display: grid;
+    gap: 1rem;
+}
+
+.ab-inner-container {
+    border: 3px solid;
+    border-color: var(--brown1);
+    border-radius: 5px;
+    background-color: var(--black1);
+}
+
 .article-pg {
     margin-bottom: 12px;
 }
@@ -195,6 +223,15 @@ figure figcaption {
     display: grid;
     gap: 1rem;
     grid-template-columns: 1fr;
+}
+
+@media (min-width: 69rem) {
+    .ab-outer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    .home-pg {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media (min-width: 38rem) {
@@ -208,6 +245,11 @@ figure figcaption {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+.a-head {
+    font-size: large;
+}
+
 .contact-pg {
     margin-bottom: 12px;
 }
