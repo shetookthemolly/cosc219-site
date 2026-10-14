@@ -92,6 +92,7 @@ article a {
 
 table {
     width: 100%;
+    font-size: 12px;
     border: 5px solid;
     border-color: var(--brown1);
     border-radius: 5px;
@@ -107,13 +108,8 @@ thead {
     color: var(--black2);
 }
 
-th {
-    padding: 5px;
-}
-
 td {
     text-align: center;
-    padding: 5px;
     background-color: var(--brown2);
     color: var(--white2);
 }
