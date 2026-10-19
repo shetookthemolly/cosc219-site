@@ -52,10 +52,11 @@ function normalizeGuess(input) {
    ---------------------------------------------------------------------- */
 
 function isValidGuess(input) {
-   // if () {
-   //    return false;
-   // }
-   // return true;
+   input = input.toLowerCase();
+   if (normalizeGuess(input) != "" && (input >= "a" && input <= "z")) {
+      return true;
+   }
+   return false;
 }
 
 
@@ -71,7 +72,10 @@ function isValidGuess(input) {
    ---------------------------------------------------------------------- */
 
 function alreadyGuessed(letter, guessedLetters) {
-
+      if (guessedLetters.includes(letter.toLowerCase())) {
+         return true;
+      }
+   return false;
 }
 
 
@@ -86,7 +90,10 @@ function alreadyGuessed(letter, guessedLetters) {
    ---------------------------------------------------------------------- */
 
 function isCorrect(letter, word) {
-
+   if (word.toUpperCase().includes(letter.toUpperCase())) {
+      return true;
+   }
+   return false;
 }
 
 
@@ -101,7 +108,13 @@ function isCorrect(letter, word) {
    ---------------------------------------------------------------------- */
 
 function livesAfterGuess(lives, correct) {
-
+   if (!correct) {
+      if (lives != 0) {
+         lives--;
+         return lives;
+      }
+   }
+   return lives;
 }
 
 
@@ -116,8 +129,11 @@ function livesAfterGuess(lives, correct) {
    scoreFor("otter")     →  80
    ---------------------------------------------------------------------- */
 
-function scoreFor(word, lives) {
-
+function scoreFor(word, lives=STARTING_LIVES) {
+   scoreFromLive = 5 * lives;
+   scoreFromWord = 10 * word.length;
+   totalScore = scoreFromWord + scoreFromLive;
+   return totalScore;
 }
 
 
@@ -138,7 +154,21 @@ function scoreFor(word, lives) {
    ---------------------------------------------------------------------- */
 
 function statusMessage(word, guessedLetters, lives) {
-
+   if (lives <= 0) {
+      return `Out of lives. The word was \"${word}\".`;
+   } else if (hasWon(word, guessedLetters)) {
+      if (lives > 1) {
+         return `You got it! \"${word}\" with ${lives} lives left.`;
+      } else {
+         return `You got it! \"${word}\" with ${lives} life left.`;
+      }
+   } else {
+      if (lives > 1) {
+         return `${lives} lives left. Guessed: ${(guessedLetters === "") ? "nothing yet" : guessedLetters}`;
+      } else {
+         return `${lives} life left. Guessed: ${(guessedLetters === "") ? "nothing yet" : guessedLetters}`;
+      }
+   }
 }
 
 
@@ -148,7 +178,17 @@ function statusMessage(word, guessedLetters, lives) {
    ---------------------------------------------------------------------- */
 
 function gradeFor(score) {
-
+   if (score >= 90) {
+      return "A";
+   } else if (score >= 80) {
+      return "B";
+   } else if (score >= 70) {
+      return "C";
+   } else if (score >= 60) {
+      return "D";
+   } else {
+      return "F";
+   }
 }
 
 
@@ -169,3 +209,11 @@ function revealWord(word, guessedLetters) {
 function hasWon(word, guessedLetters) {
   return !revealWord(word, guessedLetters).includes("_");
 }
+
+/* C2 Question: The score would break if the lines were swapped, this is seen by guessing a word on your last attempt.
+* With them swapped, it will give a grade of C when you guess the word on your last attempt, when it should actually give you a D.
+*/
+/* C3 Question: Because it is important to know when the guess is valid, because if it isn't valid, then it can't be used.
+* The guard is to make that the function exists immediately when a invalid guess is given, normalizing a invalid guess is a waste of time, 
+* and we do not want to work with invalid a guess throughout the function.
+*/

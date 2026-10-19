@@ -55,6 +55,7 @@ function newGame() {
 function submitGuess(raw) {
   if (over) return;
 
+
   if (!isValidGuess(raw)) {
     document.querySelector("#result").textContent = "Enter a single letter.";
     return;
@@ -70,6 +71,7 @@ function submitGuess(raw) {
   const correct = isCorrect(letter, word);
   guessedLetters = guessedLetters + letter;
   lives = livesAfterGuess(lives, correct);
+  
   over = lives <= 0 || hasWon(word, guessedLetters);
 
   render();
