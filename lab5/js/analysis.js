@@ -30,7 +30,7 @@
 
 function revealWord(word, guessedLetters) {
   const splitWord = word.split("");
-  const revealedArr = splitWord.map(l => (!guessedLetters.include(l) ? "_" : l));
+  const revealedArr = splitWord.map(l => (!guessedLetters.includes(l) ? "_" : l));
   return revealedArr.join("");
 }
 
@@ -44,10 +44,12 @@ function revealWord(word, guessedLetters) {
 
    Hint: which iterator answers "is this true for all of them?"
    ---------------------------------------------------------------------- */
-
 function hasWon(word, guessedLetters) {
-
+  const splitWord = word.split("");
+  const result = splitWord.every(l => guessedLetters.includes(l));
+  return result;
 }
+
 
 
 /* ======================================================================
@@ -61,7 +63,8 @@ function hasWon(word, guessedLetters) {
    ---------------------------------------------------------------------- */
 
 function trailNames(trails) {
-
+  const trailNames = trails.map(t => t.name);
+  return trailNames;
 }
 
 
@@ -71,7 +74,8 @@ function trailNames(trails) {
    ---------------------------------------------------------------------- */
 
 function openTrails(trails) {
-
+  const nonClosedTrails = trails.filter(t => !t.closed);
+  return nonClosedTrails;
 }
 
 
@@ -85,7 +89,14 @@ function openTrails(trails) {
    ---------------------------------------------------------------------- */
 
 function findByName(trails, name) {
-
+  if (name === name.toLowerCase()) {
+    const filteredTrails = trails.filter(t => t.name.toLowerCase() === name);
+    const findElement = filteredTrails.find(t => t.name.toLowerCase() === name);
+    return findElement;
+  } else {
+    const findElement = trails.find(t => t.name === name);
+    return findElement;
+  }
 }
 
 
@@ -102,7 +113,8 @@ function findByName(trails, name) {
    ---------------------------------------------------------------------- */
 
 function sortedByDistance(trails) {
-
+  const trailsCopy = trails.map(t => t);
+  return trailsCopy.sort((a, b) => a.km - b.km);
 }
 
 
