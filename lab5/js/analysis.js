@@ -113,7 +113,7 @@ function findByName(trails, name) {
    ---------------------------------------------------------------------- */
 
 function sortedByDistance(trails) {
-  const trailsCopy = trails.map(t => t);
+  const trailsCopy = [...trails];
   return trailsCopy.sort((a, b) => a.km - b.km);
 }
 
@@ -128,7 +128,8 @@ function sortedByDistance(trails) {
    ---------------------------------------------------------------------- */
 
 function anyClosed(trails) {
-
+  const isSomeClosed = trails.some(t => t.closed);
+  return isSomeClosed;
 }
 
 
@@ -139,7 +140,8 @@ function anyClosed(trails) {
    ---------------------------------------------------------------------- */
 
 function allUnder(trails, limit) {
-
+  const areAllUnder = trails.every(t => t.km < limit);
+  return areAllUnder;
 }
 
 
@@ -153,7 +155,9 @@ function allUnder(trails, limit) {
    ---------------------------------------------------------------------- */
 
 function totalDistance(trails) {
-
+  const sum = trails.reduce((total, n) => total + n.km, 0);
+  const roundedSum = Math.round(sum * 10) / 10;
+  return roundedSum;
 }
 
 
@@ -166,7 +170,14 @@ function totalDistance(trails) {
    ---------------------------------------------------------------------- */
 
 function longestTrail(trails) {
-
+  
+  const longest = trails.reduce((t, c) => {
+    if (t != undefined) {
+      return ((t.km < c.km) ? c : t);
+    } else {
+      return c
+    }}, undefined);
+  return longest;
 }
 
 
@@ -180,7 +191,7 @@ function longestTrail(trails) {
    ---------------------------------------------------------------------- */
 
 function countByRating(trails) {
-
+  //const longest = trails.reduce((), {})
 }
 
 
