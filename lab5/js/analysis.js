@@ -191,7 +191,9 @@ function longestTrail(trails) {
    ---------------------------------------------------------------------- */
 
 function countByRating(trails) {
-  //const longest = trails.reduce((), {})
+  const ratingCount = trails.reduce(t => {
+    // Finish
+  }, {})
 }
 
 
