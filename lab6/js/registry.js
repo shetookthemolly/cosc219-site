@@ -54,7 +54,7 @@ export class TrailRegistry {
 
   /* find(name) — the matching Trail, ignoring case, or undefined. */
   find(name) {
-   return this.#trails.find(e => e.name === name);
+   return this.#trails.find(e => e.name.toLowerCase() === name.toLowerCase());
   }
 
 
@@ -66,13 +66,13 @@ export class TrailRegistry {
 
   /* get openTrails — every trail that is not closed. */
   get openTrails() {
-   return this.#trails.filter(e => !(e.closed));
+   return this.#trails.filter(e => !(e.isClosed));
   }
 
 
   /* get totalDistance — all the km added up, to one decimal place. */
   get totalDistance() {
-   return this.#trails.reduce((a, e) => Math.round(a+e.km), 0);
+   return this.#trails.reduce((a, e) => Math.round((a+e.km) * 100) / 100, 0);
   }
 
 
@@ -83,7 +83,7 @@ export class TrailRegistry {
       return undefined;
    }
    return this.#trails.reduce((sn, c) => {
-      if (sn.steepest > c.steepest) {
+      if (sn.steepness > c.steepness) {
          return sn;
       } else {
          return c;
@@ -104,16 +104,16 @@ export class TrailRegistry {
      becomes a Trail. Default a missing gain to 0.
      ---------------------------------------------------------------- */
   static fromData(rows) {
-    a = rows.map(e => {
+    const a = rows.map(e => {
       const { gain = 0 } = e;
       if (e.surface !== undefined) {
-         // Fix constructor in bt object
-         bt = new BikeTrail(e, gain);
+         const bt = new BikeTrail(e.name, e.km, e.rating, gain);
          return bt
       } else {
-         t = new Trail(e.name, e.km, e.rating, gain);
+         const t = new Trail(e.name, e.km, e.rating, gain);
          return t;
       }
    });
+   return new TrailRegistry(a);
   }
 }

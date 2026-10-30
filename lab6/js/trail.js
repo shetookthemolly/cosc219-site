@@ -37,7 +37,7 @@ export class Trail {
      stored on it.
      ---------------------------------------------------------------- */
   get steepness() {
-   return Math.round(this.gain, this.km);
+   return Math.round(this.gain / this.km);
   }
 
 
@@ -98,11 +98,8 @@ export class Trail {
        Trail.fromObject({ name: "Z", km: 3, rating: "easy" }).gain  →  0
      ---------------------------------------------------------------- */
   static fromObject(obj) {
-   return {
-      name: obj.name,
-      km: obj.km,
-      rating: this.rating
-   };
+   const { gain = 0 } = obj;
+   return new Trail(obj.name, obj.km, obj.rating, gain);
   }
 }
 
@@ -117,7 +114,7 @@ export class BikeTrail extends Trail {
      ---------------------------------------------------------------- */
   constructor(name, km, rating, gain, surface) {
    super(name, km, rating, gain);
-   this.surface = surface;
+   this.surface = "gravel";
   }
 
 
