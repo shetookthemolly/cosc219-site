@@ -4,7 +4,8 @@
   so open index.html with Live Server.
 */
 
-// import TRAIL_DATA from ./data.js and TrailRegistry from ./registry.js
+import TRAIL_DATA from "./js/data.js";
+import TrailRegistry from "./js/registry.js";
 
 
 /* Build a registry from the data, close Bear Creek, then:
@@ -14,3 +15,4 @@
 
        6 trails, 5 open, 46.7 km total. Steepest: Pincushion Peak.
 */
+
