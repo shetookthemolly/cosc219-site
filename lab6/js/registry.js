@@ -107,7 +107,7 @@ export class TrailRegistry {
     const a = rows.map(e => {
       const { gain = 0 } = e;
       if (e.surface !== undefined) {
-         const bt = new BikeTrail(e.name, e.km, e.rating, gain);
+         const bt = new BikeTrail(e.name, e.km, e.rating, gain, e.surface);
          return bt
       } else {
          const t = new Trail(e.name, e.km, e.rating, gain);

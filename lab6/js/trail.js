@@ -114,7 +114,12 @@ export class BikeTrail extends Trail {
      ---------------------------------------------------------------- */
   constructor(name, km, rating, gain, surface) {
    super(name, km, rating, gain);
-   this.surface = "gravel";
+   
+   if (surface === undefined) {
+      surface = "gravel";
+   }
+
+   this.surface = surface;
   }
 
 
