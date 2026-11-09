@@ -4,16 +4,24 @@
 */
 
 // import from ./storage.js, ./render.js and ./trails.js
-
+import { saveTrails, loadTrails, clearTrails } from "./storage";
+import { createTrailItem, renderTrails, summaryText } from "./render";
+import { makeTrail, isValidTrail, addTrail, removeTrail, toggleTrail, findAction } from "./trails";
 
 /* Load the saved trails into a `let` — the array is replaced, not edited,
    every time something changes. */
-
+let trails = loadTrails();
 
 /* update() — redraw the list, rewrite the summary, and save.
    Call it whenever the data changes, and once at the very bottom of this
    file so the page is not blank on load. */
-
+function update() {
+   const container = document.querySelector("#trail-list");
+   const summary = document.querySelector("#summary");
+   renderTrails(trails, container);
+   summary.textContent = summaryText(trails);
+   saveTrails(trails);
+}
 
 /* The add form.
 
@@ -24,6 +32,7 @@
    field, and return without changing anything.
    When it is valid: clear #error, add the trail, reset the form. */
 
+// 2026-11-09: ** LEFT OFF HERE **
 
 /* The list.
 
@@ -39,3 +48,5 @@
 
 
 /* The Clear all button: empty the array, clear storage, update. */
+
+update();
