@@ -35,7 +35,7 @@
    ---------------------------------------------------------------------- */
 
 export function createTrailItem(trail) {
-
+  return 1;
 }
 
 
@@ -46,7 +46,7 @@ export function createTrailItem(trail) {
    ---------------------------------------------------------------------- */
 
 export function renderTrails(trails, container) {
-
+  return 1;
 }
 
 
@@ -60,5 +60,5 @@ export function renderTrails(trails, container) {
    ---------------------------------------------------------------------- */
 
 export function summaryText(trails) {
-
+  return 1;
 }

@@ -20,7 +20,15 @@
    ---------------------------------------------------------------------- */
 
 export function makeTrail(name, km) {
-
+   const trimmed = name.trim();
+   const n = Number(km);
+   const id = String(Date.now()) + Math.random().toString(16).slice(2, 8);
+   return {
+      id: id,
+      name: trimmed,
+      km: n,
+      closed: false
+   };
 }
 
 
@@ -39,7 +47,16 @@ export function makeTrail(name, km) {
    ---------------------------------------------------------------------- */
 
 export function isValidTrail(name, km) {
-
+   const trimmed = name.trim();
+   const n = Number(km);
+   if (trimmed != "") {
+      if (Number.isFinite(n) && n > 0) {
+         return true;
+      } else {
+         return false;
+      }
+   }
+   return false;
 }
 
 
@@ -47,7 +64,7 @@ export function isValidTrail(name, km) {
    Spread, do not push. */
 
 export function addTrail(trails, trail) {
-
+   return [...trails, trail];
 }
 
 
@@ -55,7 +72,7 @@ export function addTrail(trails, trail) {
    An id that is not there simply changes nothing. */
 
 export function removeTrail(trails, id) {
-
+   return trails.filter(t => t.id != id);
 }
 
 
@@ -66,7 +83,13 @@ export function removeTrail(trails, id) {
    ---------------------------------------------------------------------- */
 
 export function toggleTrail(trails, id) {
-
+   const newTrails = trails.map(t => {
+      if (t.id !== id) {
+         return t;
+      }
+      return {...t, closed: (t.closed === true) ? false : true};
+   })
+   return newTrails;
 }
 
 
@@ -88,5 +111,13 @@ export function toggleTrail(trails, id) {
    ---------------------------------------------------------------------- */
 
 export function findAction(target) {
-
+   const button = target.closest("button");
+   if (button !== null) {
+      const row = button.closest(".trail");
+      if (row !== null) {
+         return {action: button.dataset.action, id: row.dataset.id};
+      }
+      return null;
+   }
+   return null;
 }

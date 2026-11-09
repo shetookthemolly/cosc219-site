@@ -12,7 +12,7 @@ const KEY = "cosc219.trails";
 /* saveTrails(trails) — store the array under KEY. */
 
 export function saveTrails(trails) {
-
+   return 1;
 }
 
 
@@ -33,12 +33,12 @@ export function saveTrails(trails) {
    ---------------------------------------------------------------------- */
 
 export function loadTrails() {
-
+   return 1;
 }
 
 
 /* clearTrails() — remove the key entirely. */
 
 export function clearTrails() {
-
+   return 1;
 }
