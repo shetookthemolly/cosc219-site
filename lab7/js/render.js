@@ -35,7 +35,37 @@
    ---------------------------------------------------------------------- */
 
 export function createTrailItem(trail) {
-  return 1;
+  const li = document.createElement("li");
+  const nameSpan = document.createElement("span");
+  const distanceSpan = document.createElement("span");
+  const toggleBtn = document.createElement("button");
+  const deleteBtn = document.createElement("button");
+  const toggleLabel = document.createElement("span");
+  const deleteLabel = document.createElement("span");
+
+  li.classList.add("trail");
+  li.dataset.id = trail.id;
+  nameSpan.classList.add("trail-name");
+  nameSpan.textContent = trail.name;
+  distanceSpan.classList.add("trail-km");
+  distanceSpan.textContent = trail.km + " km";
+  toggleBtn.dataset.action = "toggle";
+  toggleLabel.classList.add("btn-label");
+  if (trail.closed === true) {
+    li.classList.add("is-closed");
+    toggleLabel.textContent = "Reopen";
+  } else {
+    toggleLabel.textContent = "Close";
+  }
+  toggleBtn.append(toggleLabel);
+  deleteBtn.dataset.action = "delete";
+  deleteBtn.setAttribute("aria-label", "Delete " + trail.name);
+  deleteLabel.classList.add("btn-label");
+  deleteLabel.textContent = "Delete";
+  deleteBtn.append(deleteLabel);
+  li.append(nameSpan, distanceSpan, toggleBtn, deleteBtn)
+
+  return li;
 }
 
 
@@ -46,7 +76,7 @@ export function createTrailItem(trail) {
    ---------------------------------------------------------------------- */
 
 export function renderTrails(trails, container) {
-  return 1;
+  return container.replaceChildren(...trails.map(t => createTrailItem(t)));
 }
 
 
@@ -60,5 +90,11 @@ export function renderTrails(trails, container) {
    ---------------------------------------------------------------------- */
 
 export function summaryText(trails) {
-  return 1;
+  const openTrails = trails.filter(t => !(t.closed));
+  const totalDistance = trails.reduce((a, t) => Math.round((a+t.km) * 100) / 100, 0);
+  if (trails.length <= 0) {
+    return "No trails yet. Add one above.";
+  } else {
+    return `${trails.length} ${(trails.length > 1) ? "trails" : "trail"}, ${openTrails.length} open, ${totalDistance} km total.`;
+  }
 }
