@@ -32,7 +32,23 @@ function update() {
    field, and return without changing anything.
    When it is valid: clear #error, add the trail, reset the form. */
 
-// 2026-11-09: ** LEFT OFF HERE **
+   const addForm = document.querySelector("form");
+   const formField = addForm.querySelector(".field");
+   const fieldName = formField.querySelector("#name");
+   const fieldDist = formField.querySelector("#km");
+   const errMsg = document.querySelector("#error");
+
+   addForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (fieldName.value === "" || fieldDist.value === "") {
+         errMsg.textContent = "The form contains an invalid input, please provide a valid input.";
+      }
+      errMsg.textContent = "";
+      const trail = makeTrail(fieldName.value, fieldDist.value);
+      trails = addTrail(trails, trail);
+      addForm.reset();
+      update();
+   })
 
 /* The list.
 
@@ -45,8 +61,24 @@ function update() {
    Clear #error here too — once the user clicks something in the list they
    have moved on from the form, and a stale validation message left on
    screen is just noise. */
-
+   const trailList = document.querySelector("#trail-list");
+   trailList.addEventListener("click", (event) => {
+      errMsg.textContent = "";
+      const { action, id } = findAction(event.target);
+      if (action === "delete") {
+         removeTrail(trails, id);
+      }
+      if (action === "toggle") {
+         toggleTrail(trails, id);
+      }
+      update();
+   })
 
 /* The Clear all button: empty the array, clear storage, update. */
-
+const clearBtn = document.querySelector("#clear");
+clearBtn.addEventListener("click", () => {
+   trails = [];
+   clearTrails();
+   update();
+})
 update();
