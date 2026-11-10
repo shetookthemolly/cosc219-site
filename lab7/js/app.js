@@ -11,7 +11,7 @@ import { makeTrail, isValidTrail, addTrail, removeTrail, toggleTrail, findAction
 /* Load the saved trails into a `let` — the array is replaced, not edited,
    every time something changes. */
 let trails = loadTrails();
-
+console.log(trails);
 /* update() — redraw the list, rewrite the summary, and save.
    Call it whenever the data changes, and once at the very bottom of this
    file so the page is not blank on load. */
@@ -64,6 +64,9 @@ function update() {
    const trailList = document.querySelector("#trail-list");
    trailList.addEventListener("click", (event) => {
       errMsg.textContent = "";
+      if (findAction(event.target) == null) {
+         return;
+      }
       const { action, id } = findAction(event.target);
       if (action === "delete") {
          trails = removeTrail(trails, id);

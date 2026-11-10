@@ -36,16 +36,12 @@ export function saveTrails(trails) {
 export function loadTrails() {
    try {
       const raw = localStorage.getItem(KEY);
-      if (raw === null) {
-         return []
-      } else {
-         const parsedResult = JSON.parse(raw);
-         if (Array.isArray(parsedResult)) {
-            return parsedResult;
-         } else {
-            return [];
-         }
-      }
+      const parsedResult = JSON.parse(raw);
+      // if (Array.isArray(parsedResult)) {
+         return parsedResult;
+      // } else {
+      //    return [];
+      // }
    } catch {
       return [];
    }
