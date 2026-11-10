@@ -10,7 +10,7 @@ import { makeTrail, isValidTrail, addTrail, removeTrail, toggleTrail, findAction
 
 /* Load the saved trails into a `let` — the array is replaced, not edited,
    every time something changes. */
-let trails = [];
+let trails = loadTrails();
 
 /* update() — redraw the list, rewrite the summary, and save.
    Call it whenever the data changes, and once at the very bottom of this
