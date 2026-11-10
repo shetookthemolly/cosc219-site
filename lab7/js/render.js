@@ -76,7 +76,8 @@ export function createTrailItem(trail) {
    ---------------------------------------------------------------------- */
 
 export function renderTrails(trails, container) {
-  return container.replaceChildren(...trails.map(t => createTrailItem(t)));
+  const newTrails = trails.map(t => createTrailItem(t));
+  return container.replaceChildren(...newTrails);
 }
 
 

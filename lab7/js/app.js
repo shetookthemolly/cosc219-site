@@ -4,13 +4,13 @@
 */
 
 // import from ./storage.js, ./render.js and ./trails.js
-import { saveTrails, loadTrails, clearTrails } from "./storage";
-import { createTrailItem, renderTrails, summaryText } from "./render";
-import { makeTrail, isValidTrail, addTrail, removeTrail, toggleTrail, findAction } from "./trails";
+import { saveTrails, loadTrails, clearTrails } from "./storage.js";
+import { createTrailItem, renderTrails, summaryText } from "./render.js";
+import { makeTrail, isValidTrail, addTrail, removeTrail, toggleTrail, findAction } from "./trails.js";
 
 /* Load the saved trails into a `let` — the array is replaced, not edited,
    every time something changes. */
-let trails = loadTrails();
+let trails = [];
 
 /* update() — redraw the list, rewrite the summary, and save.
    Call it whenever the data changes, and once at the very bottom of this
@@ -33,15 +33,15 @@ function update() {
    When it is valid: clear #error, add the trail, reset the form. */
 
    const addForm = document.querySelector("form");
-   const formField = addForm.querySelector(".field");
-   const fieldName = formField.querySelector("#name");
-   const fieldDist = formField.querySelector("#km");
    const errMsg = document.querySelector("#error");
+   const fieldName = addForm.querySelector("#name");
+   const fieldDist = addForm.querySelector("#km");
 
    addForm.addEventListener("submit", (event) => {
       event.preventDefault();
       if (fieldName.value === "" || fieldDist.value === "") {
-         errMsg.textContent = "The form contains an invalid input, please provide a valid input.";
+         errMsg.textContent = "Give the trail a name and a distance above zero.";
+         return;
       }
       errMsg.textContent = "";
       const trail = makeTrail(fieldName.value, fieldDist.value);
@@ -66,10 +66,10 @@ function update() {
       errMsg.textContent = "";
       const { action, id } = findAction(event.target);
       if (action === "delete") {
-         removeTrail(trails, id);
+         trails = removeTrail(trails, id);
       }
       if (action === "toggle") {
-         toggleTrail(trails, id);
+         trails = toggleTrail(trails, id);
       }
       update();
    })
