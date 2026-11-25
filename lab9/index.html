@@ -7,25 +7,50 @@
 
   <!-- Link Bootstrap's CSS here. Use the CDN link from the Lecture 18 slides,
        and check the version is still current. -->
-
-  <script type="module" src="main.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="./js/main.js"></script>
 </head>
 <body>
 
   <!-- A navbar that collapses on small screens.
        You need .navbar, .navbar-toggler and .navbar-collapse, wired with the
        data-bs-* attributes. Bootstrap's JavaScript does the rest. -->
-
+      
+      <div class="navbar">
+        <button class="btn btn-primary navbar-toggler ms-2" data-bs-toggle="collapse" data-bs-target="#n-bar">Search</button>
+        <div class="collapse navbar-collapse" id="n-bar">
+          <div class="container">
+            <form>
+              <div class="row g-3">
+                <div class="col-12 col-md-6">
+                  <label for="search" class="form-label">Search</label>
+                  <input type="search" id="search" name="search" class="form-control" placeholder="Search here...">
+                </div>
+                <div class="col-12 col-md-4">
+                  <label for="rating" class="form-label">Rating</label>
+                  <select id="rating" name="rating" class="form-select">
+                    <option value="ez">Easy</option>
+                    <option value="mod">Moderate</option>
+                    <option value="hrd">Hard</option>
+                  </select>
+                </div>
+                <div class="col-12 col-md-2 d-flex align-items-end">
+                  <button id="load" name="load" type="submit" class="btn btn-primary">Load</button>
+                </div>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
 
   <!-- The page content, in a .container.
-
        A .row with:
          · a search text field   col-12 col-md-6
          · a rating select       col-12 col-md-4
          · a Load button         col-12 col-md-2
        Gutters with g-3, not margins of your own.
        Every control needs a real <label> — form-label is styling, not a label. -->
-
 
   <!-- The four state panels. Give each one an id so you can show and hide it,
        and start them all with d-none.
@@ -38,6 +63,45 @@
 
 
   <!-- Bootstrap's JavaScript bundle goes here, at the end of the body. -->
+      <div id="state-loading" class="d-none">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
 
+      <div id="state-error" class="d-none">
+        <div class="alert alert-danger" role="alert">
+          <p>Error</p>
+        </div>
+      </div>
+
+      <div id="state-empty">
+        <div class="alert" role="alert">
+          <p>Empty</p>
+        </div>
+      </div>
+
+      <div id="state-loaded" class="d-none">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+          <div class="col">  
+            <div class="card mt-3">
+              <div class="card-body">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mt-3">
+              <div class="card-body">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mt-3">
+              <div class="card-body">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
 </html>

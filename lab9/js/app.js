@@ -19,7 +19,8 @@ import { fetchTrail, delay } from "./api.js";
    ---------------------------------------------------------------------- */
 
 export async function getTrailName(id) {
-
+  const t = await fetchTrail(id);
+  return t.name;
 }
 
 
@@ -39,7 +40,7 @@ export async function getTrailName(id) {
    ---------------------------------------------------------------------- */
 
 export async function getTrailNames(ids) {
-
+  return Promise.all(ids.map(async id => await fetchTrail(id).then(t => t.name)));
 }
 
 
@@ -56,7 +57,11 @@ export async function getTrailNames(ids) {
    ---------------------------------------------------------------------- */
 
 export async function getTrailSafe(id) {
-
+  try {
+    return await fetchTrail(id);
+  } catch(e) {
+    return null;
+  }
 }
 
 
@@ -74,7 +79,10 @@ export async function getTrailSafe(id) {
    ---------------------------------------------------------------------- */
 
 export async function loadSome(ids) {
-
+  const results = await Promise.allSettled(ids.map(async id => await fetchTrail(id).then(t => t.name)));
+  const fulVals = results.filter(r => r.status === 'fulfilled').map(r => r.value);
+  const rejVals = results.filter(r => r.status === 'rejected').map(r => r.reason).length;
+  return { loaded: fulVals, failed: rejVals};
 }
 
 
@@ -90,7 +98,10 @@ export async function loadSome(ids) {
    ---------------------------------------------------------------------- */
 
 export async function withTimeout(promise, ms) {
-
+  const timer = delay(ms).then(() => {
+    throw new Error("Timed out");
+  })
+  return Promise.race([promise, timer]);
 }
 
 
@@ -111,5 +122,13 @@ export async function withTimeout(promise, ms) {
    ---------------------------------------------------------------------- */
 
 export function uiState({ loading, error, items }) {
-
+  if (loading) {
+    return "loading";
+  } else if (error) {
+    return "error";
+  } else if (items === undefined || items.length === 0) {
+    return "empty";
+  } else {
+    return "loaded";
+  }
 }
